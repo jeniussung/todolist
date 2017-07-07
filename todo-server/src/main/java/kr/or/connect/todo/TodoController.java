@@ -19,8 +19,6 @@ import kr.or.connect.todo.service.TodoService;
 
 import org.springframework.http.HttpStatus;
 
-
-
 @RestController
 @RequestMapping("/api/todos")
 public class TodoController {

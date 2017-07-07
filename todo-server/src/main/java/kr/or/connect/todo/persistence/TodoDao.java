@@ -48,8 +48,8 @@ public class TodoDao {
 	}
 	
 	
-	public Integer insert(Todo book) {
-		SqlParameterSource params = new BeanPropertySqlParameterSource(book);
+	public Integer insert(Todo todo) {
+		SqlParameterSource params = new BeanPropertySqlParameterSource(todo);
 		return insertAction.executeAndReturnKey(params).intValue();
 	}
 	

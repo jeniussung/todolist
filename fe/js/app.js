@@ -2,19 +2,19 @@
 	'use strict';
 	// Your starting point. Enjoy the ride!
 
-			getList();
+			getList(); // 랜딩 되자마자 item left에 숫자를 표시
 
-		  $('.todo-list li').live('click', function() {
-		    if($(this).find($(".toggle")).is(":checked"))
+		  $('.todo-list li').live('click', function() { // todo-list 클래스의 li를 클릭하면 실행되는 제이쿼리
+		    if($(this).find($(".toggle")).is(":checked")) // li안에 toggle 클래스를 찾아서 checked되면 실행
 		    {
-		       $(this).addClass('completed');
-		       var $id = $(this).attr('id');
-		       var $com = 1;
-		       putList($id,$com);
-					 getNum();
+		       $(this).addClass('completed'); // class에 completed를 추가
+		       var $id = $(this).attr('id'); // id변수에 id의 값을 저장
+		       var $com = 1; // com 변수에 1을 저장, com은 체크가 되었는지 안되었는지를 표시하는 변ㅅ
+		       putList($id,$com);// 서버사이드에 전송
+					 getNum(); // item-left 변경
 		    }
 		    else {
-		       $(this).removeClass('completed');
+		       $(this).removeClass('completed'); //
 		       var $id = $(this).attr('id');
 		       var $com = 0;
 		       putList($id,$com);
@@ -23,9 +23,9 @@
 		  });
 
 		  $('.filters li').live('click', function() {
-		      $('.filters li a[href]').removeClass('selected');
-		      $(this).find($("a[href]")).addClass('selected');
-					var $var = $(this).children("a").attr("href");
+		      $('.filters li a[href]').removeClass('selected'); // filter 클래스에 li 안에 a[href]의 클래스명을 삭제
+		      $(this).find($("a[href]")).addClass('selected'); // 선택된 li의  a[href]의 클래스명을 selected
+					var $var = $(this).children("a").attr("href"); //
 					if($var == '#/all')
 					allShow();
 					else if($var == '#/active')
@@ -36,10 +36,12 @@
 
 			$('.new-todo').live('keypress', function(e) {
 		    if (e.which == 13) {/* 13 == enter key@ascii */
-		     var $var = $(this).val();
+		      var $var = $(this).val();
 					var $d = new Date();
 					var $date = $d.getFullYear()+'-'+($d.getMonth()+1)+'-'+$d.getDate();
-		      if($var=="")
+					var arr = [1,2,3,4,5,6,7,8,9,10];
+					aa();
+		      if($var=="") // 아무것도 입력이 안되었을 때
 		      {
 		      }
 		      else
@@ -212,5 +214,31 @@
 		     }
 		  });
 		  }
+
+			function sum(arr)
+			{
+				var i = 0;
+				var sum = 0;
+				for(i ; i < 10 ; i++)
+				{
+					sum += arr[i];
+				}
+				alert(sum);
+			}
+
+			function aa()
+			{
+				var arr = [];
+
+				for(var i = 0; i < 5; i++){
+				    arr[i] = function(){
+				        return i;
+				    }
+				}
+
+				for(var index in arr) {
+				    console.log(arr[index]());
+				}
+			}
 
 })(window);
